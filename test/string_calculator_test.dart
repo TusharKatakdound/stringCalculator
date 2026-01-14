@@ -18,6 +18,13 @@ void main() {
       expect(calculator.add('1,5'), 6);
     });
     // Test Failed output will: be: FormatException: Invalid radix-10 number (at character 1)1,5
-    //Test Passed output will be: --no-color test --machine --start-paused --plain-name "two numbers return their sum"
+    //Test Passed output will be: "two numbers return their sum"
+
+    test('multiple numbers return sum', () {
+      final calculator = StringCalculator();
+      expect(calculator.add('1,2,3,4'), 10);
+    });
+    //Test Passed output will be: "multiple numbers return sum"
+
   });
 }
