@@ -33,5 +33,14 @@ void main() {
     // Test Failed output will: be: FormatException: Invalid radix-10 number (at character 1)
     //Test Passed output will be: "new lines between numbers"
 
+    test('custom delimiter support', () {
+      final calculator = StringCalculator();
+      expect(calculator.add('//;\n1;2'), 3);
+    });
+    // Test Failed output will: be: FormatException: Invalid radix-10 number (at character 1)
+    //Test Passed output will be: "custom delimiter support"
+
+
+
   });
 }
