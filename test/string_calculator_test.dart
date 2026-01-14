@@ -26,5 +26,12 @@ void main() {
     });
     //Test Passed output will be: "multiple numbers return sum"
 
+    test('new lines between numbers', () {
+      final calculator = StringCalculator();
+      expect(calculator.add('1\n2,3'), 6);
+    });
+    // Test Failed output will: be: FormatException: Invalid radix-10 number (at character 1)
+    //Test Passed output will be: "new lines between numbers"
+
   });
 }
