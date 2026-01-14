@@ -7,5 +7,10 @@ void main() {
       final calculator = StringCalculator();
       expect(calculator.add(''), 0);
     });
+
+    test('single number returns itself', () {
+      final calculator = StringCalculator();
+      expect(calculator.add('1'), 1);
+    });
   });
 }
