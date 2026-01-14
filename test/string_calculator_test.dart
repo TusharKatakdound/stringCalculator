@@ -40,7 +40,32 @@ void main() {
     // Test Failed output will: be: FormatException: Invalid radix-10 number (at character 1)
     //Test Passed output will be: "custom delimiter support"
 
+    test('negative numbers throw exception', () {
+      final calculator = StringCalculator();
+      expect(
+            () => calculator.add('1,-2,3'),
+        throwsA(
+          predicate(
+                (e) => e is Exception &&
+                e.toString().contains('negative numbers not allowed -2'),
+          ),
+        ),
+      );
+    });
+    // Test Failed output will: be: Expected: throws an exception matching <Instance of 'Closure'>
 
+    test('multiple negative numbers listed in exception', () {
+      final calculator = StringCalculator();
+
+      expect(
+            () => calculator.add('1,-2,-3'),
+        throwsA(
+          predicate(
+                (e) => e.toString().contains('-2,-3'),
+          ),
+        ),
+      );
+    });
 
   });
 }

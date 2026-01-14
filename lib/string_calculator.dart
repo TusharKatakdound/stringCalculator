@@ -2,6 +2,7 @@
 class StringCalculator {
   int add(String numbers) {
     if (numbers.isEmpty) return 0;
+
     var delimiterPattern = RegExp('[,\n]');
     var numbersPart = numbers;
 
@@ -12,9 +13,18 @@ class StringCalculator {
       numbersPart = parts.last;
     }
 
-    return numbersPart
+    final parsedNumbers = numbersPart
         .split(delimiterPattern)
         .map(int.parse)
-        .reduce((a, b) => a + b);
+        .toList();
+
+    final negatives = parsedNumbers.where((n) => n < 0).toList();
+    if (negatives.isNotEmpty) {
+      throw Exception(
+        'negative numbers not allowed ${negatives.join(',')}',
+      );
+    }
+
+    return parsedNumbers.fold(0, (sum, n) => sum + n);
   }
 }
